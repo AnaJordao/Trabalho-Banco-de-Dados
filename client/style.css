@@ -1,0 +1,30 @@
+html, body {
+    background-color: #e8f1f2;
+}
+
+nav, footer, section {
+    background-color: #3066f3;
+}
+
+.navbar-dark .navbar-nav .nav-link .branco {
+    color: white;
+}
+
+.capa h1, .capa h4 {
+    text-align: right;
+    
+}
+
+.capa h1 {
+    color: white;
+    font-weight: bold;
+}
+
+.capa h4 {
+    color: white;
+    opacity: 0.8;
+}
+
+.capa img {
+    border-radius: 5%;
+}
