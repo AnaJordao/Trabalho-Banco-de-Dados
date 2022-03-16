@@ -1,9 +1,19 @@
-html, body {
-    background-color: #e8f1f2;
+html, body, main {
+    background: #e8f1f2;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-nav, footer, section {
+nav, footer, .capa {
     background-color: #3066f3;
+}
+
+nav a {
+    font-size: 18px;
+    border-radius: 10%;
+}
+
+#navbarNavAltMarkup a:hover {
+    background-color: #5e85e7;
 }
 
 .navbar-dark .navbar-nav .nav-link .branco {
@@ -15,7 +25,7 @@ nav, footer, section {
     
 }
 
-.capa h1 {
+.capa h1, footer h2 {
     color: white;
     font-weight: bold;
 }
@@ -27,4 +37,38 @@ nav, footer, section {
 
 .capa img {
     border-radius: 5%;
+}
+
+.box {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 15px auto 0 auto;
+    border-radius: 25px;
+    padding: 25px;
+    width: 1000px;
+}
+
+.box h2 {
+    color: #1d84b0;
+    font-size: 30px;
+}
+
+.box p {
+    color: #318dbe;
+}
+
+.box a, .box a:visited{
+    text-decoration: none;
+    color: white;
+    background-color: #1d84b0;
+    padding: 8px 15px;
+    border-radius: 10px;
+}
+
+.box a:hover {
+    background-color: #177197;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 20px;
 }
