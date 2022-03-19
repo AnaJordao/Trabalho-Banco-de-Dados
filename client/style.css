@@ -47,7 +47,7 @@ nav a {
     width: 1000px;
 }
 
-.box h2 {
+.box h2, section h2 {
     color: #1d84b0;
     font-size: 30px;
 }
@@ -71,4 +71,52 @@ nav a {
 footer {
     margin-top: 20px;
     padding: 20px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card p {
+    margin: 0;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px;
+}
+
+#centrais, #servidores, #ramais {
+    min-height: 345px;
+}
+
+table {
+    background-color: white;
+}
+
+thead {
+    background-color:#318dbe;
+    color: #e8f1f2;
+}
+
+tbody tr:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px 3px gray;
+}
+
+.btn-cadastro, .btn-cadastro:visited {
+    text-decoration: none;
+    background-color: #1d84b0;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.btn-cadastro:hover {
+    background-color: #0f668b;
+}
+
+.titulo {
+    display:inline-block;
 }
