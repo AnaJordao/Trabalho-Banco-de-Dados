@@ -32,52 +32,31 @@
     </nav>    
     <main>
 
-        <section class="container">
-            <h2 class="mt-5 mb-5 titulo">Conheça nossos ramais!</h2>
-            <a class="btn-cadastro" href="novo_ramal.html">Cadastre um novo ramal</a>
+        <section class="container" id="cadastro">
+            <h2 class="mt-5 mb-4 titulo">Cadastre uma nova central</h2>
 
-            <div id="ramais">
+            <div id="formulario">
+                <form>
+                    <fieldset>
+                        <legend class="legenda mb-4">Dados da nova central</legend>
+                        <div class="inputBox mb-4">
+                            <input type="text" name="nome" id="nome" class="inputUser" required>
+                            <label for="nome" class="labelInput">Nome</label>
+                        </div>
 
-                <!-- O tbody vai ser alimentado dinamicamente, coloquei só como EXEMPLO -->
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Número</th>
-                        <th scope="col">Tipo do Ramal</th>
-                        <th scope="col">Central</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Servidor</th>
-                        <th scope="col">Filtro</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1535</th>
-                        <td>tipo</td>
-                        <td>central</td>
-                        <td>1</td>
-                        <td>José da Silva</td>
-                        <td>Não tem</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">7328</th>
-                        <td>tipo</td>
-                        <td>central</td>
-                        <td>4</td>
-                        <td>Jorge Borges</td>
-                        <td>Não tem</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1626</th>
-                        <td>tipo</td>
-                        <td>central</td>
-                        <td>3</td>
-                        <td>Ângela de Andrade</td>
-                        <td>Tem</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                        <div class="inputBox mb-4">
+                            <input type="text" name="ip" id="ip" class="inputUser" required>
+                            <label for="ip" class="labelInput">IP</label>
+                        </div>
 
+                        <div class="inputBox mb-4">
+                            <input type="text" name="funcao-central" id="funcao-central" class="inputUser" required>
+                            <label for="funcao-central" class="labelInput">Função</label>
+                        </div>
+
+                        <input type="submit" name="submit" id="submit" value="Cadastrar">
+                    </fieldset>
+                </form>
             </div>
             
         </section>  
