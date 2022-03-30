@@ -10,6 +10,30 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended : false }))
 
+// CREATE RAMAL
+app.get('/getAllRamais', (request, response) => {
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getAllRamais()
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
+})
+
+// READ RAMAL
+
+
+// UPDATE RAMAL
+
+
+// DELETE RAMAL
+
+
+
+
+
+
 // CREATE
 
 
