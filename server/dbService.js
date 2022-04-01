@@ -11,12 +11,12 @@ const connection = mysql.createConnection({
     port: process.env.DB_PORT,
 })
 
-connection.connect((err)=>{
+/* connection.connect((err)=>{
     if(err){
         console.log(err.message)
     }
     console.log(connection)
-})
+}) */
 
 // classe usada para acessar os dados do banco de dados
 class DbService {
@@ -40,6 +40,27 @@ class DbService {
         } catch(error) {
             console.log(error)
         }
+    }
+
+    async getRamalByNumero(Numero) {
+        try {
+            Numero = parseInt(Numero, 10)
+            const response = await new Promise((resolve, reject) => {
+                const query = "SELECT * FROM ramal WHERE Numero = ?"
+
+                connection.query(query, [Numero], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result.affectedRows) 
+                })
+            })
+
+            return response
+
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+        
     }
 }
 

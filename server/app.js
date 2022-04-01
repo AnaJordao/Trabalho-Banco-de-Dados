@@ -11,6 +11,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended : false }))
 
 // CREATE RAMAL
+
+
+// READ TODOS OS RAMAIS
 app.get('/getAllRamais', (request, response) => {
     const db = dbService.getDbServiceInstance()
     
@@ -21,8 +24,19 @@ app.get('/getAllRamais', (request, response) => {
     .catch(err => console.log(err))
 })
 
-// READ RAMAL
-
+// READ SOMENTE UM RAMAL
+app.get('/getRamalByNumero/:Numero', (request, response) => {
+    const { Numero } = request.body
+    console.log(Numero)
+    
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getRamalByNumero(Numero)
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
+})
 
 // UPDATE RAMAL
 

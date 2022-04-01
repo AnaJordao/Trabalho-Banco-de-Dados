@@ -17,7 +17,7 @@ function loadHTMLTable(data){
     let tableHtml = ""
 
     data.forEach(function({Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id}) {
-        tableHtml += "<tr>"
+        tableHtml += `<tr class="ramal-row" onclick="location.href='mostra_ramal.html?${Numero}|${Filtro}|${Servidor_PR}|${Central_IP}|${Categoria_ID}|${TipoRamal_ID}|${TipoAparelho_id}'" data-id=${Numero}>`
         tableHtml += `<td>${Numero}</td>`
         tableHtml += `<td>${Filtro}</td>`
         tableHtml += `<td>${Servidor_PR}</td>`
@@ -30,3 +30,4 @@ function loadHTMLTable(data){
 
     table.innerHTML = tableHtml
 }
+
