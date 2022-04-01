@@ -45,15 +45,21 @@ class DbService {
     async getRamalByNumero(Numero) {
         try {
             Numero = parseInt(Numero, 10)
+            console.log(Numero)
             const response = await new Promise((resolve, reject) => {
-                const query = "SELECT * FROM ramal WHERE Numero = ?"
-
+                const query = "SELECT * FROM ramal, central, usuario, categoria, tiporamal, tipoaparelho " +
+                                "WHERE Numero = ? AND Servidor_PR = usuario.pr " +
+                                "AND Central_IP = central.ip " +
+                                "AND Categoria_ID = categoria.id " +
+                                "AND TipoRamal_ID = tiporamal.id " +
+                                "AND TipoAparelho_id = tipoaparelho.id;"
+                //const query = "SELECT * FROM ramal WHERE Numero = ?"
                 connection.query(query, [Numero], (err, result) => {
                     if(err) reject(new Error(err.message))
-                    resolve(result.affectedRows) 
+                    resolve(result) 
                 })
             })
-
+            console.log(response)
             return response
 
         } catch (error) {

@@ -1,15 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
     const params = location.search.substring(1).split("|")
     let Numero = params[0]
+    console.log(Numero)
 
-    fetch('http://localhost:5000/getRamalByNumero/' + Numero, {
-        method: 'GET',
-        headers:{
-            'Content-type' : 'application/json'
-        }
-    })
+    fetch('http://localhost:5000/getRamalByNumero/' + Numero)
     .then(response => response.json())
-    .then(data => console.log(data))  
+    .then(data => loadRamal(data['data']))  
 })
 
 /* const ramalRow = document.querySelectorAll('.ramal-row')
@@ -30,33 +26,29 @@ function mostraRamal(Numero){
 }
 
 function loadRamal(data){
-    data = data.split("|")
-    
+    data = data[0]
+    //console.log(data)
     const ramalInfo = document.querySelector('#formulario')
 
+    let filtro = data.Filtro == 0 ? "Não tem" : "Tem"
+    let imagem = data.FotoAparelho == null ? "Não há foto cadastrada" : data.FotoAparelho
+
     let infoHtml = ''
-
-    /* infoHtml += `<div id="formulario">`
+    
     infoHtml += `<h2>${data.Numero}</h2>`
-    infoHtml += `<h4>${data.TipoRamal_ID}</h4>`
-    infoHtml += `<h4>${data.Central_IP}</h4>`
-    infoHtml += `<h4>${data.Categoria_ID}</h4>`
-    infoHtml += `<h4>${data.Servidor_PR}</h4>`
-    infoHtml += `<h4>${data.Filtro}</h4>`
-    infoHtml += `<h4>${data.TipoAparelho_id}</h4>` */
+    infoHtml += `<h4>Tipo: ${data.ramalDescricao} (${data.TipoRamal_ID})</h4>`
+    infoHtml += `<h4>Central: ${data.centralNome} (${data.Central_IP})</h4>`
+    infoHtml += `<h4>Categoria: ${data.categoriaDescricao} (${data.Categoria_ID})</h4>`
+    infoHtml += `<h4>Servidor: ${data.usuarioNome} (${data.Servidor_PR})</h4>`
+    infoHtml += `<h4>Filtro: ${filtro}</h4>`
+    infoHtml += `<h4>Marca: ${data.Marca}</h4>`
+    infoHtml += `<h4>Descrição do Aparelho: ${data.tipoAparelhoDescricao} (${data.TipoAparelho_id})</h4>`
+    infoHtml += `<h4>Imagem: ${imagem}</h4>`
 
-    /* infoHtml += `<div id="formulario">` */
-    infoHtml += `<h2>${data[0]}</h2>`
-    infoHtml += `<h4>${data[1]}</h4>`
-    infoHtml += `<h4>${data[2]}</h4>`
-    infoHtml += `<h4>${data[3]}</h4>`
-    infoHtml += `<h4>${data[4]}</h4>`
-    infoHtml += `<h4>${data[5]}</h4>`
-    infoHtml += `<h4>${data[6]}</h4>`
-
-    infoHtml += `<button class="btn btn-danger mt-3">Deletar</button>`
-    infoHtml += `<button class="btn btn-primary mt-3">Editar</button>`
-    /* infoHtml += `</div>` */
+    infoHtml += `<div class="div-btn-mostra">`
+    infoHtml += `<button class="btn btn-danger mt-3 btn-mostra">Deletar</button>`
+    infoHtml += `<button class="btn btn-primary mt-3 btn-mostra">Editar</button>`
+    infoHtml += `</div>`
 
     ramalInfo.innerHTML += infoHtml
     

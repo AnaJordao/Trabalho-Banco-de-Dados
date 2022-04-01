@@ -206,7 +206,14 @@ form {
 .no-data {
     text-align: center;
 }
+.btn-mostra {
+    margin: 0 5px;
+}
 
-#cadastro {
-    margin: 50px 0;
+/* .div-btn-mostra {
+    margin-left: 160px;
+} */
+
+#formulario h4 {
+    font-size: 20px;
 }

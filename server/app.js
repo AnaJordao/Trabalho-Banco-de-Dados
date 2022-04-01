@@ -26,8 +26,9 @@ app.get('/getAllRamais', (request, response) => {
 
 // READ SOMENTE UM RAMAL
 app.get('/getRamalByNumero/:Numero', (request, response) => {
-    const { Numero } = request.body
-    console.log(Numero)
+    
+    const { Numero } = request.params
+    
     
     const db = dbService.getDbServiceInstance()
     
@@ -36,6 +37,7 @@ app.get('/getRamalByNumero/:Numero', (request, response) => {
     result
     .then(data => response.json({data : data}))
     .catch(err => console.log(err))
+
 })
 
 // UPDATE RAMAL
