@@ -44,35 +44,46 @@
                             <label for="numero" class="labelInput">Número</label>
                         </div>
 
-                        <select class="form-select mt-3 mb-3" aria-label="tipo">
+                        <select class="form-select mt-3 mb-3" id="tipo">
                             <option selected>Tipo do ramal</option>
+                            <option value="0">0 - Ramal IP</option>
+                            <option value="1">1 - Ramal SIP</option>
+                            <option value="2">2 - Ramal MIPT</option>
+                            <option value="3">3 - Ramal Analógico</option>
+                            <option value="4">4 - Ramal Digital</option>
                         </select>
 
-                        <select class="form-select mt-3 mb-3" aria-label="central">
-                            <option selected>Central</option>
-                        </select>
+                        <input class="form-control mt-3 mb-3" id="central-input" list="form-central" placeholder="Centrais">
+                        <datalist id="form-central">                           
+                        </datalist>
 
                         <span>Filtro:</span>
-                        <input type="radio" id="possui" name="filtro" value="possui" required>
+                        <input type="radio" id="possui" name="filtro" value="1" required>
                         <label for="possui">Possui</label>
-                        <input type="radio" id="nao-possui" name="filtro" value="nao-possui" required>
+                        <input type="radio" id="nao-possui" name="filtro" value="0" required checked>
                         <label for="nao-possui">Não possui</label>
 
-                        <select class="form-select mt-3" aria-label="Categoria">
+                        <select class="form-select mt-3" id="categoria" required>
                             <option selected>Categoria</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <option value="0">0 - Ramal + fixo local + celular + DDD + DDI + a cobrar</option>
+                            <option value="1">1 - Ramal + fixo local + celular + DDD + DDI</option>
+                            <option value="2">2 - Ramal + fixo local + celular + DDD</option>
+                            <option value="3">3 - Ramal + fixo local + celular</option>
+                            <option value="4">4 - Ramal + fixo local</option>
+                            <option value="5">5 - Ramal</option>
                         </select>
 
-                        <select class="form-select mt-3 mb-3" aria-label="servidor">
-                            <option selected>Servidor</option>
-                        </select>
+                        <input class="form-control mt-3 mb-3" id="usuario-input" list="usuarios" placeholder="Usuários">
+                        <datalist id="usuarios">
+                        </datalist>
 
-                        <select class="form-select mt-3 mb-3" aria-label="tipo-aparelho">
+                        <select class="form-select mt-3 mb-3" id="tipo-aparelho">
                             <option selected>Tipo de aparelho</option>
+                            <option value="0">0 - IPTouch-4068</option>
+                            <option value="1">1 - IPTouch-4038</option>
+                            <option value="2">2 - IPTouch-4018</option>
+                            <option value="3">3 - Gap+</option>
+                            <option value="4">4 - MobileIPTouch</option>
                         </select>
 
                         <input type="submit" name="submit" id="submit" value="Cadastrar">
@@ -97,7 +108,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="novo_ramal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 

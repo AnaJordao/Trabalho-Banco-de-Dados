@@ -68,6 +68,50 @@ class DbService {
         }
         
     }
+
+    async getDadosCadastro(){
+        try{
+            const response = await new Promise((resolve, reject) => {
+                const query = "SELECT * FROM central, usuario;"
+
+                connection.query(query, (err, results) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(results)
+                })
+            })
+            //console.log(response)
+            return response
+
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
+    async cadastraRamal(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id){
+    
+        try{
+            const cadastraNumero = await new Promise((resolve, reject) => {
+                const query = "INSERT INTO ramal (Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
+
+                connection.query(query, [Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result.cadastraNumero) 
+                })
+            })
+            console.log(cadastraNumero)
+            return {
+                Numero: Numero,
+                Filtro: Filtro,
+                Servidor_PR: Servidor_PR,
+                Central_IP: Central_IP,
+                Categoria_ID: Categoria_ID,
+                TipoRamal_ID: TipoRamal_ID,
+                TipoAparelho_id: TipoAparelho_id
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
 
 module.exports = DbService

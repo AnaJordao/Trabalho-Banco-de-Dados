@@ -11,7 +11,23 @@ app.use(express.json())
 app.use(express.urlencoded({ extended : false }))
 
 // CREATE RAMAL
+app.post('/insert', (request, response) => {
+    console.log(request.body)
+    const { Numero } = request.body
+    const { Filtro } = request.body
+    const { Servidor_PR } = request.body
+    const { Central_IP } = request.body
+    const { Categoria_ID } = request.body
+    const { TipoRamal_ID } = request.body
+    const { TipoAparelho_id } = request.body
+    const db = dbService.getDbServiceInstance()
 
+    const result = db.cadastraRamal(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id)
+
+    result
+    .then(data => response.json({ data : data }))
+    .catch(err => console.log(err))
+})
 
 // READ TODOS OS RAMAIS
 app.get('/getAllRamais', (request, response) => {
@@ -38,6 +54,17 @@ app.get('/getRamalByNumero/:Numero', (request, response) => {
     .then(data => response.json({data : data}))
     .catch(err => console.log(err))
 
+})
+
+// GET DADOS PRO CADASTRO
+app.get('/getDadosCadastro', (request, response) => {
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getDadosCadastro()
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
 })
 
 // UPDATE RAMAL
