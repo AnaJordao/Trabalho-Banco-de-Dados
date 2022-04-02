@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
     const params = location.search.substring(1).split("|")
     let Numero = params[0]
-    console.log(Numero)
+    //console.log(Numero)
 
     fetch('http://localhost:5000/getRamalByNumero/' + Numero)
     .then(response => response.json())
@@ -46,8 +46,8 @@ function loadRamal(data){
     infoHtml += `<h4>Imagem: ${imagem}</h4>`
 
     infoHtml += `<div class="div-btn-mostra">`
-    infoHtml += `<button class="btn btn-danger mt-3 btn-mostra">Deletar</button>`
-    infoHtml += `<button class="btn btn-primary mt-3 btn-mostra">Editar</button>`
+    infoHtml += `<a class="btn btn-danger mt-3 btn-mostra">Deletar</a>`
+    infoHtml += `<a href="edita_ramal.html?${data.Numero}" class="btn btn-primary mt-3 btn-mostra">Editar</a>`
     infoHtml += `</div>`
 
     ramalInfo.innerHTML += infoHtml

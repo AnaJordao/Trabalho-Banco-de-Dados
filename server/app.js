@@ -11,8 +11,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended : false }))
 
 // CREATE RAMAL
-app.post('/insert', (request, response) => {
-    console.log(request.body)
+app.post('/insertRamal', (request, response) => {
+    //console.log(request.body)
     const { Numero } = request.body
     const { Filtro } = request.body
     const { Servidor_PR } = request.body
@@ -31,6 +31,7 @@ app.post('/insert', (request, response) => {
 
 // READ TODOS OS RAMAIS
 app.get('/getAllRamais', (request, response) => {
+    console.log("teste")
     const db = dbService.getDbServiceInstance()
     
     const result = db.getAllRamais()
@@ -68,6 +69,25 @@ app.get('/getDadosCadastro', (request, response) => {
 })
 
 // UPDATE RAMAL
+app.patch('/updateRamal', (request, response) => {
+    
+    const { Numero } = request.body
+    const { Filtro } = request.body
+    const { Servidor_PR } = request.body
+    const { Central_IP } = request.body
+    const { Categoria_ID } = request.body
+    const { TipoRamal_ID } = request.body
+    const { TipoAparelho_id } = request.body
+    /* console.log("teste")
+    console.log(Numero) */
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.updateRamalByNumero(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id)
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err))
+})
 
 
 // DELETE RAMAL
@@ -90,4 +110,4 @@ app.get('/getDadosCadastro', (request, response) => {
 
 
 // npx nodemon app.js --> npm run dev
-app.listen(process.env.PORT, () => console.log('App is running!'))
+app.listen(process.env.PORT, () => console.log('App is running! On PORT: ', process.env.PORT))

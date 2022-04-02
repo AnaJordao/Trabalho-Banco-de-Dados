@@ -161,7 +161,8 @@ legend .legenda {
 }
 
 .inputUser:focus ~ .labelInput,
-.inputUser:valid ~ .labelInput{
+.inputUser:valid ~ .labelInput,
+.inputUser:disabled ~ .labelInput {
     top: -20px;
     font-size: 12px;
     color: dodgerblue;
@@ -209,10 +210,6 @@ form {
 .btn-mostra {
     margin: 0 5px;
 }
-
-/* .div-btn-mostra {
-    margin-left: 160px;
-} */
 
 #formulario h4 {
     font-size: 20px;

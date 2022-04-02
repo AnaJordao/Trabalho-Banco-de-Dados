@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
+    console.log("teste")
     fetch('http://localhost:5000/getAllRamais')
     .then(response => response.json())
-    .then(data => loadHTMLTable(data['data']))  
+    .then(data => {loadHTMLTable(data['data'])})  
+    .catch(e => console.log(e))
 })
 
 function loadHTMLTable(data){

@@ -98,7 +98,7 @@ class DbService {
                     resolve(result.cadastraNumero) 
                 })
             })
-            console.log(cadastraNumero)
+            //console.log(cadastraNumero)
             return {
                 Numero: Numero,
                 Filtro: Filtro,
@@ -110,6 +110,28 @@ class DbService {
             }
         }catch(error){
             console.log(error)
+        }
+    }
+
+    async updateRamalByNumero(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id){
+        try {
+            Numero = parseInt(Numero, 10)
+            console.log(Numero)
+            const response = await new Promise((resolve, reject) => {
+                const query = "UPDATE ramal SET Filtro = ?, Servidor_PR = ?, Central_IP = ?, Categoria_ID = ?, TipoRamal_ID = ?, TipoAparelho_id = ? " + 
+                              "WHERE Numero = ?;"
+
+                connection.query(query, [Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id, Numero], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result) 
+                })
+            })
+
+            return response === 1 ? true : false
+
+        } catch (error) {
+            console.log(error)
+            return false
         }
     }
 }
