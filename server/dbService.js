@@ -45,7 +45,6 @@ class DbService {
     async getRamalByNumero(Numero) {
         try {
             Numero = parseInt(Numero, 10)
-            //console.log(Numero)
             const response = await new Promise((resolve, reject) => {
                 const query = "SELECT * FROM ramal, central, usuario, categoria, tiporamal, tipoaparelho " +
                                 "WHERE Numero = ? AND Servidor_PR = usuario.pr " +
@@ -133,6 +132,27 @@ class DbService {
             console.log(error)
             return false
         }
+    }
+
+    async deleteRamalByNumero(Numero) {
+        try {
+            Numero = parseInt(Numero, 10)
+            const response = await new Promise((resolve, reject) => {
+                const query = "DELETE FROM ramal WHERE Numero = ?"
+
+                connection.query(query, [Numero], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result.affectedRows) 
+                })
+            })
+
+            return response === 1 ? true : false
+
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+        
     }
 }
 

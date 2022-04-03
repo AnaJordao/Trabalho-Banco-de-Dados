@@ -90,7 +90,16 @@ app.patch('/updateRamal', (request, response) => {
 
 
 // DELETE RAMAL
+app.delete('/deleteRamal/:Numero', (request, response) => {
+    const { Numero } = request.params
+    const db = dbService.getDbServiceInstance()
 
+    const result = db.deleteRamalByNumero(Numero)
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err))
+})
 
 
 

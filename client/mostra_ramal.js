@@ -46,10 +46,23 @@ function loadRamal(data){
     infoHtml += `<h4>Imagem: ${imagem}</h4>`
 
     infoHtml += `<div class="div-btn-mostra">`
-    infoHtml += `<a class="btn btn-danger mt-3 btn-mostra">Deletar</a>`
+    infoHtml += `<a onclick="deleteRamalByNumero(${data.Numero})" href="ramais.html" class="btn btn-danger mt-3 btn-mostra">Deletar</a>`
     infoHtml += `<a href="edita_ramal.html?${data.Numero}" class="btn btn-primary mt-3 btn-mostra">Editar</a>`
     infoHtml += `</div>`
 
     ramalInfo.innerHTML += infoHtml
     
+}
+
+function deleteRamalByNumero(Numero){   
+    
+    fetch('http://localhost:5000/deleteRamal/' + Numero, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.href('ramais.html')
+        }
+    })
 }
