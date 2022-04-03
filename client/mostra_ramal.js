@@ -19,7 +19,7 @@ ramalRow.onclick = function (){
 } */
 
 function mostraRamal(Numero){
-    console.log(Numero)
+    //console.log(Numero)
     fetch('http://localhost:5000/getRamalByNumero/' + Numero)
     .then(response => response.json())
     .then(data => loadRamal(data['data']))

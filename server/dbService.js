@@ -45,7 +45,7 @@ class DbService {
     async getRamalByNumero(Numero) {
         try {
             Numero = parseInt(Numero, 10)
-            console.log(Numero)
+            //console.log(Numero)
             const response = await new Promise((resolve, reject) => {
                 const query = "SELECT * FROM ramal, central, usuario, categoria, tiporamal, tipoaparelho " +
                                 "WHERE Numero = ? AND Servidor_PR = usuario.pr " +
@@ -59,7 +59,7 @@ class DbService {
                     resolve(result) 
                 })
             })
-            console.log(response)
+            
             return response
 
         } catch (error) {
@@ -116,17 +116,17 @@ class DbService {
     async updateRamalByNumero(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id){
         try {
             Numero = parseInt(Numero, 10)
-            console.log(Numero)
+            //console.log(Numero)
             const response = await new Promise((resolve, reject) => {
                 const query = "UPDATE ramal SET Filtro = ?, Servidor_PR = ?, Central_IP = ?, Categoria_ID = ?, TipoRamal_ID = ?, TipoAparelho_id = ? " + 
                               "WHERE Numero = ?;"
 
                 connection.query(query, [Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id, Numero], (err, result) => {
                     if(err) reject(new Error(err.message))
-                    resolve(result) 
+                    resolve(result.affectedRows) 
                 })
             })
-
+            //console.log(response)
             return response === 1 ? true : false
 
         } catch (error) {

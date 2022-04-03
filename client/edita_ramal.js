@@ -99,9 +99,5 @@ updateBtn.onclick = function(){
         body: JSON.stringify({ Numero : numero,  Filtro : filtro, Servidor_PR : usuario, Central_IP : central, Categoria_ID: categoria, TipoRamal_ID: tipoRamal, TipoAparelho_id: tipoAparelho})
     })
     .then(response => response.json())
-    .then(data => {
-        if(data.success){
-            location.href('ramais.html')
-        }
-    })
+    
 }

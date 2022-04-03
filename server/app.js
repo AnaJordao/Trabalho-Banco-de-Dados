@@ -31,7 +31,7 @@ app.post('/insertRamal', (request, response) => {
 
 // READ TODOS OS RAMAIS
 app.get('/getAllRamais', (request, response) => {
-    console.log("teste")
+    
     const db = dbService.getDbServiceInstance()
     
     const result = db.getAllRamais()
@@ -78,8 +78,7 @@ app.patch('/updateRamal', (request, response) => {
     const { Categoria_ID } = request.body
     const { TipoRamal_ID } = request.body
     const { TipoAparelho_id } = request.body
-    /* console.log("teste")
-    console.log(Numero) */
+    
     const db = dbService.getDbServiceInstance()
 
     const result = db.updateRamalByNumero(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id)
