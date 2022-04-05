@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Ra+ | Servidores</title>
+    <title>Ra+ | Cadastro de Central</title>
 </head>
 <body style="background-color: #e8f1f2;">
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -33,20 +33,31 @@
     <main>
 
         <section class="container" id="cadastro">
-            <h2 class="mt-5 mb-4 titulo">Ramal</h2>
+            <h2 class="mt-5 mb-4 titulo">Cadastre uma nova central</h2>
 
             <div id="formulario">
-                <h2>1727</h2>
-                <h4>Tipo</h4>
-                <h4>Central</h4>
-                <h4>Categoria</h4>
-                <h4>Servidor</h4>
-                <h4>Filtro</h4>
+                <form>
+                    <fieldset>
+                        <legend class="legenda mb-4">Dados da nova central</legend>
+                        <div class="inputBox mb-4">
+                            <input type="text" name="nome" id="nome" class="inputUser" required>
+                            <label for="nome" class="labelInput">Nome</label>
+                        </div>
 
-                <button class="btn btn-danger mt-3">Deletar</button>
-                <button class="btn btn-primary mt-3">Editar</button>
+                        <div class="inputBox mb-4">
+                            <input type="text" name="ip" id="ip" class="inputUser" required>
+                            <label for="ip" class="labelInput">IP</label>
+                        </div>
+
+                        <div class="inputBox mb-4">
+                            <input type="text" name="funcao-central" id="funcao-central" class="inputUser" required>
+                            <label for="funcao-central" class="labelInput">Função</label>
+                        </div>
+
+                        <input type="submit" name="submit" id="submit" value="Cadastrar">
+                    </fieldset>
+                </form>
             </div>
-            
             
         </section>  
     </main>
@@ -68,4 +79,5 @@
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+
 </html>
