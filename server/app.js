@@ -101,6 +101,17 @@ app.delete('/deleteRamal/:Numero', (request, response) => {
     .catch(err => console.log(err))
 })
 
+// READ TODAS AS CENTRAIS
+app.get('/getAllCentrais', (request, response) => {
+    
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getAllCentrais()
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
+})
 
 
 
