@@ -14,7 +14,7 @@ function loadCards(data){
     let cardHtml = ''
     
     data.forEach(function({ip, centralNome, centralFuncao}) {
-        cardHtml += `<div class="col-4">`
+        cardHtml += `<div class="col-4" onclick="location.href='mostra_central.html?${ip}'">`
         cardHtml += `<div class="card mt-3" style="width: 18rem; border-radius: 20px;">`
         cardHtml += `<div class="card-body">`
         cardHtml += `<h4 class="card-title">${centralNome}</h4>`

@@ -113,6 +113,20 @@ app.get('/getAllCentrais', (request, response) => {
     .catch(err => console.log(err))
 })
 
+// READ SOMENTE UMA CENTRAL
+app.get('/getCentralByIp/:ip', (request, response) => {
+    
+    const { ip } = request.params
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getCentralByIp(ip)
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
+
+})
+
 
 
 

@@ -70,13 +70,34 @@ class DbService {
                                 "AND Categoria_ID = categoria.id " +
                                 "AND TipoRamal_ID = tiporamal.id " +
                                 "AND TipoAparelho_id = tipoaparelho.id;"
-                //const query = "SELECT * FROM ramal WHERE Numero = ?"
                 connection.query(query, [Numero], (err, result) => {
                     if(err) reject(new Error(err.message))
                     resolve(result) 
                 })
             })
             
+            return response
+
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+        
+    }
+
+    async getCentralByIp(ip) {
+        try {
+           
+            const response = await new Promise((resolve, reject) => {
+                const query = "SELECT ip, centralNome, centralFuncao, Numero FROM central " +
+                              "LEFT JOIN ramal " +
+                              "ON ip = ? AND Central_IP = central.ip;"
+                connection.query(query, [ip], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result) 
+                })
+            })
+            //console.log(response)
             return response
 
         } catch (error) {
