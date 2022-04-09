@@ -151,6 +151,28 @@ class DbService {
         }
     }
 
+    async cadastraCentral(ip, centralNome, centralFuncao){
+    
+        try{
+            const cadastraIp = await new Promise((resolve, reject) => {
+                const query = "INSERT INTO central (ip, centralNome, centralFuncao) VALUES (?, ?, ?);"
+
+                connection.query(query, [ip, centralNome, centralFuncao], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result.cadastraIp) 
+                })
+            })
+            
+            return {
+                ip: ip,
+                centralNome: centralNome,
+                centralFuncao: centralFuncao
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     async updateRamalByNumero(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id){
         try {
             Numero = parseInt(Numero, 10)

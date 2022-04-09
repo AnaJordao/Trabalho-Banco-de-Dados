@@ -127,6 +127,21 @@ app.get('/getCentralByIp/:ip', (request, response) => {
 
 })
 
+// CREATE CENTRAL
+app.post('/insertCentral', (request, response) => {
+    //console.log(request.body)
+    const { ip } = request.body
+    const { centralNome } = request.body
+    const { centralFuncao } = request.body
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.cadastraCentral(ip, centralNome, centralFuncao)
+
+    result
+    .then(data => response.json({ data : data }))
+    .catch(err => console.log(err))
+})
+
 
 
 
