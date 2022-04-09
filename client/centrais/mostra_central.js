@@ -42,12 +42,22 @@ function loadCentral(data){
     infoHtml += `<h4>Função: ${data.centralFuncao}</h4>`
     infoHtml += `<h4>Ramais cadastrados: ${ramais}</h4>`
     
-
     infoHtml += `<div class="div-btn-mostra">`
-    infoHtml += `<a onclick="deleteCentralByIp(${data.ip})" href="centrais.html" class="btn btn-danger mt-3 btn-mostra">Deletar</a>`
+    if(ramais === 'Ainda não há ramais cadastrados'){
+        infoHtml += `<a onclick="deleteCentralByIp('${data.ip}')" href="centrais.html" class="btn btn-danger mt-3 btn-mostra">Deletar</a>`
+    }
     infoHtml += `<a href="edita_central.html?${data.ip}" class="btn btn-primary mt-3 btn-mostra">Editar</a>`
     infoHtml += `</div>`
 
     centralInfo.innerHTML += infoHtml
+    
+}
+
+function deleteCentralByIp(ip){   
+    
+    fetch('http://localhost:5000/deleteCentral/' + ip, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
     
 }
