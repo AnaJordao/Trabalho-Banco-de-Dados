@@ -195,6 +195,28 @@ class DbService {
         }
     }
 
+    async updateCentralByIp(ip, centralNome, centralFuncao){
+        try {
+            
+            //console.log(Numero)
+            const response = await new Promise((resolve, reject) => {
+                const query = "UPDATE central SET centralNome = ?, centralFuncao = ? " + 
+                              "WHERE ip = ?;"
+
+                connection.query(query, [centralNome, centralFuncao, ip], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result) 
+                })
+            })
+            //console.log(response)
+            return response === 1 ? true : false
+
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
     async deleteRamalByNumero(Numero) {
         try {
             Numero = parseInt(Numero, 10)
@@ -207,6 +229,27 @@ class DbService {
                 })
             })
 
+            return response === 1 ? true : false
+
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+        
+    }
+
+    async deleteCentralByIp(ip) {
+        try {
+            
+            const response = await new Promise((resolve, reject) => {
+                const query = "DELETE FROM central WHERE ip = ?"
+
+                connection.query(query, [ip], (err, result) => {
+                    if(err) reject(new Error(err.message))
+                    resolve(result) 
+                })
+            })
+            
             return response === 1 ? true : false
 
         } catch (error) {
