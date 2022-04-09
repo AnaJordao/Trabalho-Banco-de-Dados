@@ -142,6 +142,34 @@ app.post('/insertCentral', (request, response) => {
     .catch(err => console.log(err))
 })
 
+// UPDATE CENTRAL
+app.patch('/updateCentral', (request, response) => {
+    
+    const { ip } = request.body
+    const { centralNome } = request.body
+    const { centralFuncao } = request.body
+    
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.updateCentralByIp(ip, centralNome, centralFuncao)
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err))
+})
+
+// DELETE CENTRAL
+app.delete('/deleteCentral/:ip', (request, response) => {
+    const { ip } = request.params
+    const db = dbService.getDbServiceInstance()
+
+    const result = db.deleteCentralByIp(ip)
+    
+    result
+    .then(data => response.json({success : data}))
+    .catch(err => console.log(err))
+})
+
 
 
 
