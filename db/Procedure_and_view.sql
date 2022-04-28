@@ -31,3 +31,13 @@ and ramal.TipoRamal_ID = tiporamal.id;
 
 -- CHAMANDO A VIEW
 SELECT * FROM trabalhofinal.relacaoUsuarioTipoRamal;
+
+-- VIEW PARA MOSTRAR QUAIS USUÁRIOS FIZERAM CADA ATENDIMENTO
+create view atendimentoUsuarios as
+select usuario.pr, usuario.usuarioNome, atendimento.atendimentoNumero, atendimento.DataInicio, atendimento.DataTermino
+from usuario, servidor_has_atendimento, atendimento
+where usuario.pr = servidor_has_atendimento.Servidor_PR
+and servidor_has_atendimento.Atendimento_Numero = atendimento.atendimentoNumero;
+
+-- CHAMANDO A VIEW
+SELECT * FROM trabalhofinal.atendimentoUsuarios;
