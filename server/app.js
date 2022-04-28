@@ -205,12 +205,12 @@ app.get('/getAllUsuarios', (request, response) => {
 })
 
 // READ SOMENTE UM USUARIO
-app.get('/getUsuarioByPr/:pr', (request, response) => {
+app.get('/getUsuarioByName/:usuarioNome', (request, response) => {
     
-    const { pr } = request.params
+    const { usuarioNome } = request.params
     const db = dbService.getDbServiceInstance()
     
-    const result = db.getCentralByPr(pr)
+    const result = db.getUsuarioByName(usuarioNome)
     
     result
     .then(data => response.json({data : data}))
