@@ -21,3 +21,13 @@ DELIMITER ;
 -- CHAMANDO A PROCEDURE
 call trabalhofinal.porcentTipoRamal(0, @porcentagem);
 select @porcentagem;
+
+-- VIEW PARA RELACIONAR OS USUÁRIOS AOS TIPO DE RAMAIS
+create view relacaoUsuarioTipoRamal as
+select ramal.Numero, tiporamal.ramalDescricao, usuario.pr, usuario.usuarioNome
+from usuario, ramal, tiporamal
+where usuario.pr = ramal.Servidor_PR
+and ramal.TipoRamal_ID = tiporamal.id;
+
+-- CHAMANDO A VIEW
+SELECT * FROM trabalhofinal.relacaoUsuarioTipoRamal;
