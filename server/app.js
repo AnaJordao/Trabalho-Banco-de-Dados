@@ -13,16 +13,16 @@ app.use(express.urlencoded({ extended : false }))
 // CREATE RAMAL
 app.post('/insertRamal', (request, response) => {
     //console.log(request.body)
-    const { Numero } = request.body
-    const { Filtro } = request.body
-    const { Servidor_PR } = request.body
-    const { Central_IP } = request.body
-    const { Categoria_ID } = request.body
-    const { TipoRamal_ID } = request.body
+    const { pr } = request.body
+    const { usuarioNome } = request.body
+    const { DataContratacao } = request.body
+    const { Observacao_ID } = request.body
+    const { Lotacao_ID } = request.body
+    const { Funcao_ID } = request.body
     const { TipoAparelho_id } = request.body
     const db = dbService.getDbServiceInstance()
 
-    const result = db.cadastraRamal(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id)
+    const result = db.cadastraRamal(pr, usuarioNome, DataContratacao, Observacao_ID, Lotacao_ID, Funcao_ID, TipoAparelho_id)
 
     result
     .then(data => response.json({ data : data }))
@@ -42,14 +42,14 @@ app.get('/getAllRamais', (request, response) => {
 })
 
 // READ SOMENTE UM RAMAL
-app.get('/getRamalByNumero/:Numero', (request, response) => {
+app.get('/getRamalBypr/:pr', (request, response) => {
     
-    const { Numero } = request.params
+    const { pr } = request.params
     
     
     const db = dbService.getDbServiceInstance()
     
-    const result = db.getRamalByNumero(Numero)
+    const result = db.getRamalBypr(pr)
     
     result
     .then(data => response.json({data : data}))
@@ -71,17 +71,17 @@ app.get('/getDadosCadastro', (request, response) => {
 // UPDATE RAMAL
 app.patch('/updateRamal', (request, response) => {
     
-    const { Numero } = request.body
-    const { Filtro } = request.body
-    const { Servidor_PR } = request.body
-    const { Central_IP } = request.body
-    const { Categoria_ID } = request.body
-    const { TipoRamal_ID } = request.body
+    const { pr } = request.body
+    const { usuarioNome } = request.body
+    const { DataContratacao } = request.body
+    const { Observacao_ID } = request.body
+    const { Lotacao_ID } = request.body
+    const { Funcao_ID } = request.body
     const { TipoAparelho_id } = request.body
     
     const db = dbService.getDbServiceInstance()
 
-    const result = db.updateRamalByNumero(Numero, Filtro, Servidor_PR, Central_IP, Categoria_ID, TipoRamal_ID, TipoAparelho_id)
+    const result = db.updateRamalBypr(pr, usuarioNome, DataContratacao, Observacao_ID, Lotacao_ID, Funcao_ID, TipoAparelho_id)
     
     result
     .then(data => response.json({success : data}))
@@ -90,11 +90,11 @@ app.patch('/updateRamal', (request, response) => {
 
 
 // DELETE RAMAL
-app.delete('/deleteRamal/:Numero', (request, response) => {
-    const { Numero } = request.params
+app.delete('/deleteRamal/:pr', (request, response) => {
+    const { pr } = request.params
     const db = dbService.getDbServiceInstance()
 
-    const result = db.deleteRamalByNumero(Numero)
+    const result = db.deleteRamalBypr(pr)
     
     result
     .then(data => response.json({success : data}))
@@ -173,11 +173,50 @@ app.delete('/deleteCentral/:ip', (request, response) => {
 
 
 
-// CREATE
+// CREATE USUARIOS
 
+app.post('/insertUsuarios', (request, response) => {
+    //console.log(request.body)
+    const { pr } = request.body
+    const { usuarioNome } = request.body
+    const { DataContratacao } = request.body
+    const { Observacao_ID } = request.body
+    const { Lotacao_ID } = request.body
+    const { Funcao_ID } = request.body
+    const db = dbService.getDbServiceInstance()
 
-// READ
+    const result = db.cadastraUsuario(pr, usuarioNome, DataContratacao, Observacao_ID, Lotacao_ID, Funcao_ID)
 
+    result
+    .then(data => response.json({ data : data }))
+    .catch(err => console.log(err))
+})
+
+// READ TODOS USUÁRIOS
+app.get('/getAllUsuarios', (request, response) => {
+    
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getAllUsuarios()
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
+})
+
+// READ SOMENTE UM USUARIO
+app.get('/getUsuarioByPr/:pr', (request, response) => {
+    
+    const { pr } = request.params
+    const db = dbService.getDbServiceInstance()
+    
+    const result = db.getCentralByPr(pr)
+    
+    result
+    .then(data => response.json({data : data}))
+    .catch(err => console.log(err))
+
+})
 
 // UPDATE
 
